@@ -1,0 +1,68 @@
+function generateResume() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const about = document.getElementById('about').value;
+  const aim = document.getElementById('aim').value;
+  const education = document.getElementById('education').value;
+  const experience = document.getElementById('experience').value;
+  const skills = document.getElementById('skills').value;
+  const hobbies = document.getElementById('hobbies').value;
+  const linkedin = document.getElementById('linkedin').value;
+  const naukri = document.getElementById('naukri').value;
+
+  const profilePic = document.getElementById('profilePic').files[0];
+  let profileImageURL = '';
+  
+  if (profilePic) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      profileImageURL = e.target.result;
+      displayResume(profileImageURL); // Call after image loads
+    };
+    reader.readAsDataURL(profilePic);
+  } else {
+    displayResume('');
+  }
+
+  function displayResume(imgURL) {
+    const resumeHTML = `
+      ${imgURL ? `<img src="${imgURL}" alt="Profile Picture">` : ''}
+      <h2>${name}</h2>
+      <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
+
+      <h3>👤 About Me</h3>
+      <p>${about}</p>
+
+      <h3>🎯 Career Aim</h3>
+      <p>${aim}</p>
+
+      <h3>🎓 Education</h3>
+      <p>${education}</p>
+
+      <h3>💼 Experience</h3>
+      <p>${experience}</p>
+
+      <h3>🛠️ Skills</h3>
+      <p>${skills}</p>
+
+      <h3>🎨 Hobbies</h3>
+      <p>${hobbies}</p>
+
+      <h3>🔗 Social Links</h3>
+      <p>
+        ${linkedin ? `<a href="${linkedin}" target="_blank">LinkedIn</a><br>` : ''}
+        ${naukri ? `<a href="${naukri}" target="_blank">Naukri Profile</a>` : ''}
+      </p>
+    `;
+
+    document.getElementById('resumeOutput').innerHTML = resumeHTML;
+  }
+}
+
+function downloadPDF() {
+  const element = document.getElementById('resumeOutput');
+  html2pdf().from(element).save('My_Resume.pdf');
+}
+
+

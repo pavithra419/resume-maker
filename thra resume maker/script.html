@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Maker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Resume Maker</h1>
+
+    <div class="form-section">
+      <input type="text" id="name" placeholder="Full Name">
+      <input type="email" id="email" placeholder="Email">
+      <input type="text" id="phone" placeholder="Phone Number">
+
+      <textarea id="about" placeholder="About Me"></textarea>
+      <textarea id="aim" placeholder="Career Aim"></textarea>
+      <textarea id="education" placeholder="Education"></textarea>
+      <textarea id="experience" placeholder="Experience"></textarea>
+      <textarea id="skills" placeholder="Skills"></textarea>
+      <textarea id="hobbies" placeholder="Hobbies"></textarea>
+
+      <input type="text" id="linkedin" placeholder="LinkedIn URL">
+      <input type="text" id="naukri" placeholder="Naukri URL">
+      
+      <label>Upload Profile Picture:</label>
+      <input type="file" id="profilePic" accept="image/*">
+
+      <button onclick="generateResume()">Generate Resume</button>
+    </div>
+
+    <div id="resumeOutput" class="resume-section"></div>
+    <button onclick="downloadPDF()">Download as PDF</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
